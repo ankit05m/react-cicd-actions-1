@@ -48,10 +48,10 @@ jobs:
         run: npm ci
       - name: Build project
         run: npm run build
-      - name: Upload dist artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload Dist Artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: dist-files
+          name: github-pages
           path: dist
   deploy:
     needs: build
@@ -63,7 +63,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to github pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
         with:
